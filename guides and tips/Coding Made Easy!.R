@@ -1,6 +1,6 @@
 # Miscellaneous tools for making coding easier
 
-## pipdiff package
+## pipediff package
 # remotes::install_github("moodymudskipper/pipediff")
 library(dplyr)
 
@@ -9,8 +9,8 @@ library(dplyr)
 pipediff::pipediff()
 starwars %>%
   group_by(species) %>%
-  summarise(n = n(), mass = mean(mass, na.rm = TRUE)) %>%
-  filter(n > 1, mass > 50)  %>%
+  summarise(n = n(), mass = mean(mass, na.rm = TRUE)) %>% 
+  filter(n > 1, mass > 50)  %>% 
   mutate(mass = round(mass)) %>%
   as.data.frame() %>%
   nrow()
@@ -34,11 +34,16 @@ x %>% purrr::map(sum)
 x %>% 
   purrr::map(sum) %>% 
   as_loop()
+# --- convert: `purrr::map(x, sum)` as loop --- #
+out <- vector("list", length = length(x))
 
+for (i in seq_along(x)) {
+  out[[i]] <- sum(x[[i]])
+}
+# --- end loop --- #
 ## Code Snippets (RStudio feature)
- 
-  
-  
+
+
   
 
 
